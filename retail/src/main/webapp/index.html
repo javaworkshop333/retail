@@ -1,21 +1,18 @@
 <html>
 <link href="css/index.css" rel="stylesheet" type="text/css"></link>
-	<div id="main" >
-		<div id="header"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/another.js"></script>
+<script src="js/index.js"></script>
+ 
+		<div id="main" >
+		<div id="header" onmouseover="disappearImage()"
+			onmouseout="appearImage()"
+		></div>
 		<div id="body">
 			<div id="filter" ></div>
 			<div class="prodDis" >
 				<div id="products">
 					<form action="register">
-					<div id="p">
-						<img src="images/1.png" />
-					</div id="p">
-					<div id="p">
-						<img src="images/1.png" />
-					</div id="p">
-					<div id="p">
-						<img src="images/1.png" />
-					</div>
 					
 						<table>
 							<tr>
@@ -28,6 +25,8 @@
 							</tr>
 						</table>
 						<br>
+						<input type="submit"  id="submit" onclick="return jsVerifyLoginForm()"/>
+					</form>
 						
 						
 						<br>
@@ -40,7 +39,7 @@
   						 <input type="checkbox" id="fruits" name="fruits" value="mango">mango
   						 <input type="checkbox" id="fruits" name="fruits" value="banana">banana
   						<br>
-						comments <Textarea rows="10" cols="25"></Textarea>
+						comments <Textarea onblur="alert('customer left comments')" rows="10" cols="25"></Textarea>
 						<table border=1>
 							<tr>
 								<th>fruit</th>
@@ -58,7 +57,7 @@
 						</ol>
 						<ul>
 							<li>tomato</li>
-							<li>onion</li>
+							<li  class="test">onion</li>
 							<li>carrots</li>
 						</ul>
 						<select name="language">
@@ -66,8 +65,16 @@
 							<option value="jee">jee</option> 
 						</select>
 						<br>
-						<input type="submit" />
-					</form>
+					<div id="p">
+						<img src="images/1.png" />
+					</div id="p">
+					<div id="p">
+						<img src="images/1.png" />
+					</div id="p">
+					<div id="p">
+						<img src="images/1.png" />
+					</div>
+					
 				</div>
 				<div id="cart" >
 					<div id="csstest">
@@ -79,4 +86,5 @@
 		</div>
 		<div id="footer" ></div>
 	</div>
+	
 </html>

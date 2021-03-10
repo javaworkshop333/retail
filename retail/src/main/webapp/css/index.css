@@ -2,7 +2,7 @@
 	height:85%;width:100%;
 }
 input{
-	background:green
+	background:white
 }
 #main{
 	height:100%;width:100%;background:green
@@ -10,8 +10,8 @@ input{
 #header{
 	height:10%;width:100%;background:#5858FA
 }
-#header:hover{
-	background:red
+.redcolor{
+	background:red;
 }
 #filter
 {
