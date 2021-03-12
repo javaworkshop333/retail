@@ -13,8 +13,8 @@
 	};
 
  test();
- 
- function disappearImage(){
+ // tightly coupled
+ function disappearImage1(){
 	 //document.getElementById("cart").style="display:none";
 	 $("#cart").hide();
  }
@@ -26,11 +26,7 @@ function jsVerifyLoginForm(){
 	
 	var customerEnteredUid=document.getElementById("uid").value;
 	var customerEnteredpwd=document.getElementById("pwd").value;
-	if(customerEnteredUid.indexOf("@") == -1){
-		alert(" userid should be like email id with @");
-		document.getElementById("uid").style="background:red";
-		return false;
-	}
+	 
 	
 	if(customerEnteredUid == "" )
 	{
@@ -126,11 +122,30 @@ function add(a, b){
  }
  
  //	JQUERY CODE
- /*
+ 
  $(document).ready(function() {
 		$("#submit").click(jqueryVerifyLoginForm);
+		$("#fruitname").blur(testFruit);
+		$("#header").mouseenter(disapperCrt);
+		$("#header").mouseleave(apperCrt);
+		
 	});
- 
+ function disapperCrt(){
+	 $("#cart").fadeOut(5000);
+ }
+ function apperCrt(){
+	 $("#cart").fadeIn(5000);
+ }
+ function testFruit(){
+	 // no input to val method - reads text box value
+	 var fruit=$("#fruitname").val(   );
+	 if(fruit == "newyork")
+		 // val method with input - set text box value
+		 $("#fruitcolor").val("US");
+	 if(fruit == "tokyo")
+		 $("#fruitcolor").val("Japan");
+	 
+ }
  function jqueryVerifyLoginForm(){
 	 	var customerEnteredUid=$("#uid").val();
 	 	var customerEnteredpwd=$("#pwd").val();
@@ -153,7 +168,6 @@ function add(a, b){
 testJquery();
 function testJquery(){
 	var aw=$("li.test").siblings().text();
-	console.log(aw);
+	console.log("::"+aw);
 }
 
-*/

@@ -2,30 +2,30 @@
 <link href="css/index.css" rel="stylesheet" type="text/css"></link>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/another.js"></script>
-<script src="js/index.js"></script>
  
 		<div id="main" >
-		<div id="header" onmouseover="disappearImage()"
-			onmouseout="appearImage()"
-		></div>
+		<div id="header"></div>
 		<div id="body">
 			<div id="filter" ></div>
 			<div class="prodDis" >
 				<div id="products">
-					<form action="register">
+					<input type="text" id="fruitname" name="fruitname" />  
+					<input type="text" id="fruitcolor" name="fruitcolor" />  
+					http://localhost/testing
+					<form action="login" method="post">
 					
 						<table>
 							<tr>
 								<td> userid   </td>
-								<td> <input type="text" id="uid" name="uid" />  </td>
+								<td> <input type="text" id="uid" name="userid" />  </td>
 							</tr>
 							<tr>
 								<td>  password  </td>
-								<td> <input type="password" id="pwd" name="pwd" /> </td>
+								<td> <input type="password" id="pwd" name="password" /> </td>
 							</tr>
 						</table>
 						<br>
-						<input type="submit"  id="submit" onclick="return jsVerifyLoginForm()"/>
+						<input type="submit"  id="submit" />
 					</form>
 						
 						
@@ -86,5 +86,6 @@
 		</div>
 		<div id="footer" ></div>
 	</div>
+	<script src="js/index.js"></script>
 	
 </html>

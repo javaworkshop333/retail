@@ -12,6 +12,9 @@ input{
 }
 .redcolor{
 	background:red;
+	height:10%;
+	width:10%;
+	float:right;
 }
 #filter
 {
