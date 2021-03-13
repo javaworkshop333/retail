@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,19 +12,41 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.RegularExpression;
-@WebServlet("/login") // url mapping
+@WebServlet("/login") // annotation - project configuration - url mapping
 public class LoginServlet extends HttpServlet {
-
-	// 12.12.12.12
+	// doGet & doPost REQUIRED to override
+	
+	// http://localhost/login?userid=john&password=jane
+	// tomcat container
+	// 1) identify servlet program for /login = LoginServlet 
+	// 2) service method is called to identify doget or dopost
+	// 3) tomcat container puts userid=john&password=jane in HttpServletRequest paremter 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
+		
+		// 1.2.3.4
+		if(req.getRemoteAddr() == "1.2.3.4")
+			return;
+		
 		String uid = req.getParameter("userid");
 		String pwd = req.getParameter("password");
-		
+		System.out.println( req.getQueryString() );
 		try {
 			if(uid.equals("john") && pwd.equals("jane"))
+			{
+				res.getWriter().write(" login is successful "); // text format response
+				/*
+				req.getSession().setAttribute("login", "success");
 				res.sendRedirect("welcome.html");
-			else
-				res.sendRedirect("error.html");
+				*/
+			}
+			else {
+				byte[] b="login failed".getBytes();
+				res.getOutputStream().write(b); // binary format response
+				/*
+				req.getSession().setAttribute("login", "failed");
+				req.getRequestDispatcher("error.jsp").forward(req, res);
+				*/
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -32,26 +55,13 @@ public class LoginServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) {
 		doGet(req,res);
-		/*
-		// 12.12.12.12
-		String ip = req.getRemoteAddr();
-		if (ip == "12.12.12.12") {
-			res.getWriter().print("security threat detected... you are blocked");
-			return;
-		}
-
-		String acctTo = req.getParameter("destinationAcct");
-		String transferAmmount = req.getParameter("amount");
-
-		HttpSession customerSession = req.getSession();
-		customerSession.invalidate();
-
-		boolean isloggedin = (boolean) customerSession.getAttribute("isloggedIn");
-		if (isloggedin == true)
-			System.out.println("transfer money");
-		else
-			res.sendRedirect("login.html"); // send session id - 123
-*/
 	}
 
+	public void init(ServletConfig config) {
+		System.out.println("setting up servlet information");
+	}
+	
+	public void destroy() {
+		System.out.println("cleaning servlet information");
+	}
 }
