@@ -30,8 +30,12 @@ public class LoginServlet extends HttpServlet {
 		String uid = req.getParameter("userid");
 		String pwd = req.getParameter("password");
 		System.out.println( req.getQueryString() );
-		try {
-			if(uid.equals("john") && pwd.equals("jane"))
+		
+		UsersTable ut=new UsersTable();
+		Connection conn=DatabaseConnection.getDBConnection();
+		try{
+			boolean loginResult=ut.validateLogin(uid, pwd, conn);
+			if(loginResult == true)
 			{
 				res.getWriter().write(" login is successful "); // text format response
 				/*
@@ -47,9 +51,15 @@ public class LoginServlet extends HttpServlet {
 				req.getRequestDispatcher("error.jsp").forward(req, res);
 				*/
 			}
-			
-		} catch (Exception e) {
+
+		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
