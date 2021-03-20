@@ -10,6 +10,17 @@ input{
 #header{
 	height:10%;width:100%;background:#5858FA
 }
+#login{
+	height:100%;
+	width:50%;
+	float:left;
+}
+#register{
+	
+	height:100%;
+	width:50%;
+	float:left;
+}
 .redcolor{
 	background:red;
 	height:10%;

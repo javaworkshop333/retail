@@ -128,7 +128,7 @@ function add(a, b){
 		$("#fruitname").blur(testFruit);
 		$("#header").mouseenter(disapperCrt);
 		$("#header").mouseleave(apperCrt);
-		
+		$("#reguid").blur( userCheck );
 	});
  function disapperCrt(){
 	 $("#cart").fadeOut(5000);
@@ -171,3 +171,25 @@ function testJquery(){
 	console.log("::"+aw);
 }
 
+function userCheck(){
+	$.ajax({
+        url: 'http://localhost:5050/usercheck?userid='+$("#reguid").val(),
+        type: 'get',
+        
+        context: this,
+        success: function (data) {
+        	console.log(data);
+        	if(data.firstName != null)
+        		alert("userid already exist");
+        },
+        error: function (data) {
+            console.log("failure");
+        }
+});
+
+	/* when sending post
+	 data: {
+                  uid:$("#uid").val()
+        },
+	 */
+}
