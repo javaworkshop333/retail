@@ -6,11 +6,13 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import com.hibernate.LoginEntity;
 import com.hibernate.springdata.LoginRepository;
 
-@Component
-@Scope("session")
+@Service
+@Scope("prototype")
 public class ProfileBean {
 	public LoginEntity ue;
 
@@ -19,39 +21,28 @@ public class ProfileBean {
 	public LoginRepository ur;
 
 	public boolean register(String userid, String pwd, String fname, String lname) {
-		try {
-			LoginEntity ue = new LoginEntity(userid, pwd, fname, lname);
-			ur.save(ue);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+		LoginEntity ue = new LoginEntity(userid, pwd, fname, lname);
+		ur.save(ue);
+		return true;
 	}
 
 	public boolean update(String userid, String pwd) {
-		try {
-			ur.update(userid, pwd);
+		int i=ur.update(userid, pwd);
+		if(i>0)
 			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
+		else
 			return false;
-		}
 	}
 
 	public boolean delete(String userid) {
-		try {
-			int i=ur.delete(userid);
-			if(i>0)
-				return true;
-			else
-				return false;
-		} catch (Exception e) {
-			e.printStackTrace();
+		int i=ur.delete(userid);
+		if(i>0)
+			return true;
+		else
 			return false;
-		}
 	}
-
+	
+/*
 	public LoginEntity findUser(String userid) {
 		List<LoginEntity> results = ur.findByUid(userid);
 		if (results.size() == 0)
@@ -59,5 +50,5 @@ public class ProfileBean {
 		else
 			return results.get(0);
 	}
-
+*/
 }

@@ -15,8 +15,7 @@ import com.hibernate.LoginEntity;
 @Aspect
 @Component
 public class LoggingAspect  {
-	
-	@Around("execution (* com.spring.beans.ProfileBean.register(..))")
+	@Around("within(com.spring.beans.ProfileBean)")
 	public boolean getResponseTime(ProceedingJoinPoint  joinPoint) throws Exception{
 		// ******************** SECURITY *************************
 		boolean res=false;

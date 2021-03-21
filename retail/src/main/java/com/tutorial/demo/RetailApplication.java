@@ -33,6 +33,7 @@ public class RetailApplication extends SpringBootServletInitializer implements A
 		StrutsPrepareAndExecuteFilter struts = new StrutsPrepareAndExecuteFilter();
 		registrationBean.setFilter(struts);
 		registrationBean.setOrder(1);
+		
 		return registrationBean;
 	}
 

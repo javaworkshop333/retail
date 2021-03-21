@@ -20,6 +20,7 @@ public class JSONAction  extends ActionSupport{
 	public ProfileBean profile;
 	public String execute()
 	{ 
+		/*
 		LoginEntity le=profile.findUser(userid);
 		if(le!=null) {
 			firstName=le.getFirstName();
@@ -28,7 +29,11 @@ public class JSONAction  extends ActionSupport{
 		else {
 			userid="user not found";
 		}
+		*/
+		firstName="jane";
+		lastName="doe";
 		return "success";
+		
 	}
 	// Response json
 	public String firstName;

@@ -74,7 +74,7 @@ public class ProfileAction extends ActionSupport {
 		}
 
 	}
- 
+
 	public String delete() throws Exception {
 		try {
 			boolean deletedRecords=profile.delete(userid);
@@ -92,6 +92,27 @@ public class ProfileAction extends ActionSupport {
 		} catch (Exception e) {
 			e.printStackTrace();
 			inputStream = new StringBufferInputStream("failed deletion");
+			return SUCCESS;
+		}
+	}
+
+	public String update() throws Exception {
+		try {
+			boolean updatedRecords=profile.update(userid,password);
+			if(updatedRecords)
+			{
+				inputStream = new StringBufferInputStream("successfully updated");
+				return SUCCESS;
+			}
+			else
+			{
+				inputStream = new StringBufferInputStream("failed updation");
+				return SUCCESS;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			inputStream = new StringBufferInputStream("failed updation");
 			return SUCCESS;
 		}
 	}
