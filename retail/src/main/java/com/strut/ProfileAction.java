@@ -4,6 +4,8 @@ import java.io.InputStream;
 import java.io.StringBufferInputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.config.PropConfig;
+import com.config.YAMLConfig;
 import com.opensymphony.xwork2.ActionSupport;
 import com.spring.beans.ProfileBean;
 
@@ -62,7 +64,14 @@ public class ProfileAction extends ActionSupport {
 	public ProfileBean profile;
 	// SPRING DEPENDANCY INJECTION
 
+	@Autowired
+	PropConfig propertiesConfig;
+	@Autowired
+	YAMLConfig yamlConfig;
+	
 	public String register() throws Exception {
+		System.out.println("properties:"+propertiesConfig.ipaddress);
+		System.out.println("yaml:"+yamlConfig.getIp());
 		try {
 			profile.register(userid, password, fname, lname);
 			System.out.println("returning success");

@@ -20,7 +20,9 @@ public interface LoginRepository extends JpaRepository<LoginEntity, String> {
 	public List<LoginEntity> verify(String users,String password);
 	
 	//SQL
-	@Query(value="SELECT * FROM users WHERE user= ?1 and password=?2",nativeQuery = true)
+	// MySQl, Oracle, Postgres, microsoft SQL server
+	// now(), sysdate
+	@Query(value="SELECT * FROM login WHERE userid= ?1 and password=?2",nativeQuery = true)
 	public List<LoginEntity> nativeVerify(String users,String password);
 
 	@Transactional

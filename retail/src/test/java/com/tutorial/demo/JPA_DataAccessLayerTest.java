@@ -25,17 +25,12 @@ public class JPA_DataAccessLayerTest {
 		assertEquals(1, users.size());
 	}
 	@Test
-	public void test2VerifyUser() {
-		List<LoginEntity>  log=ur.verify("tester", "tester123");
-		assertEquals(1, log.size());
-	}
-	@Test
-	public void test3UpdatePwd() {
+	public void test2UpdatePwd() {
 		int i=ur.update("tester", "tester234");
 		assertEquals(1, i);
 	}
 	@Test
-	public void test4DeleteUser() {
+	public void test3DeleteUser() {
 		LoginEntity user= new LoginEntity("tester");
 		ur.delete(user);
 		List<LoginEntity>  users= ur.findByUidAndPwd("tester","tester123");
