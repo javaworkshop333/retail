@@ -21,7 +21,11 @@
 			</result>
 		</action>
 		<action name="changePassword" class="com.strut.ProfileAction" method="update">
-			<result type="stream">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param> <!--  character stream response -->
+			</result>
+			<result name="error" type="stream">
 				<param name="contentType">text/html</param>
 				<param name="inputName">inputStream</param> <!--  character stream response -->
 			</result>

@@ -42,13 +42,25 @@ public class ProfileBean {
 			return false;
 	}
 	
-/*
-	public LoginEntity findUser(String userid) {
-		List<LoginEntity> results = ur.findByUid(userid);
-		if (results.size() == 0)
-			return null;
-		else
-			return results.get(0);
+	/*
+	 	userid empty = return false
+	 	password empty return false
+	 	both are empty return false
+	 	userid is invalid = return false
+	 	password is invalid return false
+	 	if both are correct return true
+	 */
+	public boolean loginCheck(String userid,String password) {
+		if(userid.equals(""))
+			return false;
+		if(password.equals(""))
+			return false;
+		
+		List<LoginEntity> le=ur.findByUidAndPwd(userid, password);
+		if(le.size() > 0)
+			return true;
+		else 
+			return false;
 	}
-*/
+
 }

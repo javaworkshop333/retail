@@ -72,6 +72,8 @@ public class ProfileAction extends ActionSupport {
 	public String register() throws Exception {
 		System.out.println("properties:"+propertiesConfig.ipaddress);
 		System.out.println("yaml:"+yamlConfig.getIp());
+		System.out.println("yaml:"+yamlConfig.getFruits());
+		System.out.println("yaml:"+yamlConfig.getDbConn());
 		try {
 			profile.register(userid, password, fname, lname);
 			System.out.println("returning success");
@@ -106,6 +108,15 @@ public class ProfileAction extends ActionSupport {
 	}
 
 	public String update() throws Exception {
+		
+		if(userid.equals("")) {
+			inputStream = new StringBufferInputStream("failed updation");
+			return ERROR;
+		}
+		if(password.equals("")) {
+			inputStream = new StringBufferInputStream("failed updation");
+			return ERROR;
+		}
 		try {
 			boolean updatedRecords=profile.update(userid,password);
 			if(updatedRecords)
@@ -116,7 +127,7 @@ public class ProfileAction extends ActionSupport {
 			else
 			{
 				inputStream = new StringBufferInputStream("failed updation");
-				return SUCCESS;
+				return ERROR;
 			}
 			
 		} catch (Exception e) {

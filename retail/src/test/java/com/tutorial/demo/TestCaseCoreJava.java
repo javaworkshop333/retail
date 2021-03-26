@@ -37,6 +37,7 @@ public class TestCaseCoreJava {
 		Calculator c=new Calculator();
 		int sum=c.add(1, 1);
 		// test output equals
+		// detail description if test fails , EXPECTED RESULT, ACTUAL RESULT GOT FROM METHOD
 		assertEquals("1 + 1 is always 2 " ,2 ,sum);
 		//("failure message", expected output, method call to be tested)
 	}	

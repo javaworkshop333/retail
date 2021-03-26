@@ -36,4 +36,44 @@ public class Spring_ModelLayerTest {
 		boolean res = profile.delete("tester");
 		assertEquals(true,res);
 	}
+	@Test
+	public void Test3SpringDeleteTestUidNotExist() throws Exception {
+		boolean res = profile.delete("abc");
+		assertEquals(false,res);
+	}
+	/* For all Usecase below , write 1 testcase each
+	 	userid empty = return false
+	 	password empty return false
+	 	both are empty return false
+	 	userid is invalid = return false
+	 	password is invalid return false
+	 	if both are correct return true
+	 */
+	@Test
+	public void Test41checkUserEmptyUserid() throws Exception {
+		boolean res = profile.loginCheck("", "asd");
+		assertEquals(false,res);
+	}
+	@Test
+	public void Test42checkUserEmptyPassword() throws Exception {
+		boolean res = profile.loginCheck("asd", "");
+		assertEquals(false,res);
+	}	
+	@Test
+	public void Test43checkUserEmptyPasswordAndEmptyUserid() throws Exception {
+		boolean res = profile.loginCheck("", "");
+		assertEquals(false,res);
+	}	
+
+	@Test
+	public void Test44checkUserinvalidUserid() throws Exception {
+		boolean res = profile.loginCheck("jane", "asd");
+		assertEquals(false,res);
+	}
+
+	@Test
+	public void Test45checkUserValidUserid() throws Exception {
+		boolean res = profile.loginCheck("jane", "jane123");
+		assertEquals(true,res);
+	}
 }

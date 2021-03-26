@@ -2,10 +2,25 @@ spring:
    profiles: test
 ip: 1.2.3.4
 port: 5050
- 
+appRunning: true
+fruits:
+      - mango
+      - banana
+      - apple
+dbConn:
+    userid: root
+    password: root 
+    
 ---
  
 spring:
     profiles: prod
 ip: 2.3.4.5
 port: 6060
+fruits:
+      - mango
+      - banana
+      - apple
+dbConn:
+    userid: root
+    password: awsroot

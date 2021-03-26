@@ -31,10 +31,8 @@ public class JPA_DataAccessLayerTest {
 	}
 	@Test
 	public void test3DeleteUser() {
-		LoginEntity user= new LoginEntity("tester");
-		ur.delete(user);
-		List<LoginEntity>  users= ur.findByUidAndPwd("tester","tester123");
-		assertEquals(0, users.size());
+		int i=ur.delete("tester");
+		assertEquals(1, i);
 	}
 	
 	

@@ -26,18 +26,49 @@ public class Struts_ControllerLayerTest  extends StrutsSpringJUnit4TestCase<Prof
         
         ActionProxy proxy = getActionProxy("/strutreg"); // invoke url
         String result = proxy.execute();
+        // allows u to compare , expected result and actual result strut returned
         assertEquals("success", result);        
     }
 
 	@Test
  	public void strut2ChangePassword() throws Exception{
 		request.addParameter("userid", "tester");
-		request.addParameter("pwd", "tester123");
+		request.addParameter("password", "tester123");
 		ActionProxy proxy=getActionProxy("/changePassword");
 		String result=proxy.execute();
 		assertEquals("success", result);
 	}
+ 
+	@Test
+ 	public void strut21ChangePasswordNoUserid() throws Exception{
+		request.addParameter("userid", "");
+		request.addParameter("password", "tester123");
+		ActionProxy proxy=getActionProxy("/changePassword");
+		String result=proxy.execute();
+		assertEquals("error", result);
+	}
 
+	@Test
+ 	public void strut22ChangePasswordNoPasword() throws Exception{
+		request.addParameter("userid", "tester");
+		request.addParameter("password", "");
+		ActionProxy proxy=getActionProxy("/changePassword");
+		String result=proxy.execute();
+		assertEquals("error", result);
+	}
+
+	@Test
+ 	public void strut23ChangePasswordWrongUserid() throws Exception{
+		request.addParameter("userid", "abc");
+		request.addParameter("password", "tester123");
+		ActionProxy proxy=getActionProxy("/changePassword");
+		String result=proxy.execute();
+		assertEquals("error", result);
+	}
+
+	
+	
+	
 	@Test
  	public void strut3DeleteUser() throws Exception{
 		request.addParameter("userid", "tester");
